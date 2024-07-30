@@ -36,6 +36,15 @@ app.use(
   })
 );
 
+
+
+// Handle preflight requests for all routes
+app.options('*', cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+}));
+
 export default app;
 
 app.get('/', (req, res) =>
